@@ -116,7 +116,7 @@ function HomeScreen({ navigation }) {
       </Modal>
 
       <Text style={styles.Header1}>{storedData}/{caltotal}</Text>
-      <Text style={styles.Header2}>Press to add</Text>
+      <Text style={styles.Header2}>Press to a dd</Text>
 
       <Svg width={500} height={500}>
         <Circle
