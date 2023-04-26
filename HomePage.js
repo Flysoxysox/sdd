@@ -67,20 +67,23 @@ function HomeScreen({ navigation }) {
   };
 
   const Increment = async () => {
+    
     await AsyncStorage.setItem("stuff", JSON.stringify(storedData + N1));
+
     ReloadData();
+   
     setGraphicData(wantedGraphicData); // Setting the data that we want to display
   };
   const wantedGraphicData = [
-    { x: " ", y: ((storedData)/(caltotal))*100},
-    { x: " ", y: 100-((storedData)/(caltotal))*100},
+    { x: " ", y: ((storedData + N1)/(caltotal))*100},
+    { x: " ", y: 100-((storedData + N1)/(caltotal))*100},
   ];
 
 
   
 
   useEffect(() => {
-    
+    setGraphicData(wantedGraphicData); // Setting the data that we want to display
   }, []);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
