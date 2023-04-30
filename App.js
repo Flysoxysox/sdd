@@ -5,7 +5,8 @@ import { NavigationContainer,} from '@react-navigation/native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import HomeScreen from './HomePage';
-import NotificationsScreen from './NotificationsScreen';
+import BarcodeScreen from './BarcodeScreen';
+import Test from './Test';
 
 const MyTheme = {
   dark: false,
@@ -28,7 +29,8 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Home">
         
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Barcode Scanner" component={BarcodeScreen} />
+        <Drawer.Screen name="Test" component={Test} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
