@@ -35,7 +35,7 @@ function BarcodeScreen({ navigation }) {
   };
 
   const showAlert = (energy) => {
-    alert(`Bruh this got this many joules: ${energy}`);
+    alert(`this got this many joules: ${energy}`);
   };
 
   if (hasPermission === null) {

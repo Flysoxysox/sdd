@@ -11,12 +11,12 @@ import Test from './Test';
 const MyTheme = {
   dark: false,
   colors: {
-    primary: 'rgb(130, 90, 229)',
-    background: 'rgb(251, 251, 251)',
-    card: 'rgb(255, 255, 255)',
-    text: 'rgb(28, 28, 30)',
-    border: 'rgb(199, 199, 204)',
-    notification: 'rgb(255, 69, 58)',
+     primary: 'rgb(130, 90, 229)',
+    background: '#F5F5F7',
+    card: '#FFFFFF',
+    text: '#2C2C2E',
+    border: '#BDBDC1',
+    notification: '#F44336',
   
   },
 };
