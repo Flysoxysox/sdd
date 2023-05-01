@@ -4,25 +4,38 @@ import { BarCodeScanner } from "expo-barcode-scanner";
 import Constants from "expo-constants";
 import { Dimensions } from "react-native";
 
-
 const { width } = Dimensions.get("window");
 const qrSize = width * 0.7;
 
 function BarcodeScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+  const [bdata, setData] = useState([]);
+  console.log(bdata);
 
   useEffect(() => {
     (async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === "granted");
-      
     })();
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bruh this barcode number is: ${data}`);
+
+    fetch(`https://world.openfoodfacts.org/api/v2/product/${data}.json?fields=nutriments`)
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json);
+        showAlert(json.product.nutriments.energy);
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  };
+
+  const showAlert = (energy) => {
+    alert(`Bruh this got this many joules: ${energy}`);
   };
 
   if (hasPermission === null) {
@@ -47,18 +60,15 @@ function BarcodeScreen({ navigation }) {
         <Text style={styles.description}>Scan your Barcode</Text>
         <Image
           style={styles.qr}
-          source={require('./assets/scanner.png')}
+          source={require("./assets/scanner.png")}
         />
-        <Text
-          onPress={() => alert("Navigate back from here")}
-          style={styles.cancel}
-        >
+        <Text onPress={() => alert("Navigate back from here")} style={styles.cancel}>
           Cancel
         </Text>
       </BarCodeScanner>
       {scanned && (
         <View style={styles.againbutton}>
-        <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
+          <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
         </View>
       )}
     </View>
@@ -75,13 +85,11 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   qr: {
-
     width: qrSize + 120,
     height: qrSize + 120,
   },
   description: {
     fontSize: width * 0.09,
-
     textAlign: "center",
     width: "80%",
     color: "white",
@@ -94,12 +102,10 @@ const styles = StyleSheet.create({
     color: "white",
   },
   againbutton: {
-
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 50,
- 
+
   },
 });
 export default BarcodeScreen;
