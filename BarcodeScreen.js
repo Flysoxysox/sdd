@@ -29,14 +29,14 @@ function BarcodeScreen({ navigation }) {
       .then((response) => response.json())
       .then((json) => {
         setData(json);
-        showAlert(json.product.nutriments.energy_serving);
+        showAlert(json.product.nutriments.energy);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   };
 
-  const showAlert = (energy_serving) => {
-    alert(`this got this many calories per serve: ${Math.ceil(energy_serving/4.184)}`);
+  const showAlert = (energy) => {
+    alert(`this got this many joules: ${energy}`);
   };
 
   if (hasPermission === null) {
