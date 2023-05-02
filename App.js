@@ -18,7 +18,7 @@ const MyTheme = {
     text: '#2C2C2E',
     border: '#BDBDC1',
     notification: '#F44336',
-  
+ 
   },
 };
 
@@ -27,7 +27,9 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator initialRouteName="Home" screenOptions={{
+        drawerType: 'slide'
+      }}>
         
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Barcode Scanner" component={BarcodeScreen} />

@@ -36,7 +36,7 @@ function BarcodeScreen({ navigation }) {
   };
 
   const showAlert = (energy) => {
-    alert(`this got this many joules: ${energy}`);
+    alert(`this got this many joules: ${Math.ceil(energy/4.184)}`);
   };
 
   if (hasPermission === null) {
