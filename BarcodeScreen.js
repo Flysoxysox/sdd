@@ -3,6 +3,7 @@ import { Image, Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import Constants from "expo-constants";
 import { Dimensions } from "react-native";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const { width } = Dimensions.get("window");
 const qrSize = width * 0.7;
@@ -62,7 +63,7 @@ function BarcodeScreen({ navigation }) {
           style={styles.qr}
           source={require("./assets/scanner.png")}
         />
-        <Text onPress={() => alert("Navigate back from here")} style={styles.cancel}>
+        <Text onPress={() =>  navigation.navigate('Home')} style={styles.cancel}>
           Cancel
         </Text>
       </BarCodeScanner>
