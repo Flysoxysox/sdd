@@ -25,7 +25,7 @@ const ExcerciseItem = ({ name, Muscle, onPress }) => {
   );
 };
 
-function Test({ navigation }) {
+function XLibrary({ navigation }) {
   const { colors } = useTheme();
   const [modalVisible, setModalVisible] = React.useState(false);
   const [selectedExcercise, setSelectedExcercise] = React.useState({});
@@ -197,4 +197,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Test;
+export default XLibrary;

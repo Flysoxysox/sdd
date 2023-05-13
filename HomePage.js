@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Dimensions,
-  Alert,    
+  Alert,
   Modal,
   StyleSheet,
   Text,
@@ -31,7 +31,7 @@ function HomeScreen({ navigation }) {
   const [text, setText] = useState("");
   var caltotal = 3000;
   var N1 = Number(text);
-  var graphicColor = [alertcol, "#8250e5", "#8250e5"]; 
+  var graphicColor = [alertcol, "#8250e5", "#8250e5"];
   const [storedData, setStoredData] = useState(0);
 
   const GetData = () => {
@@ -59,10 +59,6 @@ function HomeScreen({ navigation }) {
     ReloadData();
 
     setGraphicData(wantedGraphicData);
-    
-   
-     
-    
   };
   const wantedGraphicData = [
     { x: " ", y: ((storedData + N1) / caltotal) * 100 },
@@ -71,7 +67,6 @@ function HomeScreen({ navigation }) {
 
   useEffect(() => {
     setGraphicData(wantedGraphicData);
-    
   }, []);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

@@ -5,6 +5,7 @@ import Constants from "expo-constants";
 import { Dimensions } from "react-native";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+
 const { width } = Dimensions.get("window");
 const qrSize = width * 0.7;
 
@@ -32,7 +33,7 @@ function BarcodeScreen({ navigation }) {
         showAlert(json.product.nutriments.energy);
       })
       .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
+      .finally(() => setLoading(false));  
   };
 
   const showAlert = (energy) => {
