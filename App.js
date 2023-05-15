@@ -11,6 +11,7 @@ import HomeScreen from "./HomePage";
 import BarcodeScreen from "./BarcodeScreen";
 import XLibrary from "./XLibrary";
 import RLibrary from "./RLibrary";
+import IntakeCalculator from "./IntakeCalculator";
 
 const MyTheme = {
   dark: false,
@@ -39,6 +40,7 @@ export default function App() {
         <Drawer.Screen name="Barcode Scanner" component={BarcodeScreen} />
         <Drawer.Screen name="Excercise Library" component={XLibrary} />
         <Drawer.Screen name="Recipe Library" component={RLibrary} />
+        <Drawer.Screen name="Intake Calculator" component={IntakeCalculator} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
