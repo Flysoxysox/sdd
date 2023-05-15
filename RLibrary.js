@@ -455,6 +455,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "justify",
     marginBottom: 20,
+    color: "#F5F5F7",
   },
   modalButton: {
     borderRadius: 5,
@@ -475,10 +476,12 @@ const styles = StyleSheet.create({
   bulletPoint: {
     fontSize: 16,
     marginBottom: 5,
+    color: "#F5F5F7",
   },
   numberedList: {
     marginLeft: 20,
     marginBottom: 20,
+    color: "#F5F5F7",
   },
   stepContainer: {
     flexDirection: "row",
@@ -490,11 +493,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginRight: 5,
     paddingBottom: 30,
+    color: "#F5F5F7",
   },
   stepText: {
     flex: 1,
     fontSize: 16,
     textAlign: "justify",
+    color: "#F5F5F7",
   
   },
 });

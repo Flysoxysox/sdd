@@ -9,10 +9,12 @@ import {
   Pressable,
   TextInput,
   Button,
+  TouchableOpacity,
 } from "react-native";
 import { TextSize, VictoryPie, standalone, VictoryLabel } from "victory-native";
 import Svg, { Path, Circle } from "react-native-svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTheme } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -24,7 +26,8 @@ const defaultGraphicData = [
   { x: " ", y: 100 },
 ];
 
-function HomeScreen({ navigation }) {
+function Home({ navigation }) {
+  const { colors } = useTheme();
   var alertcol = "#4e1bb4";
   const [graphicData, setGraphicData] = useState(defaultGraphicData);
   const [modalVisible, setModalVisible] = useState(false);
@@ -69,7 +72,8 @@ function HomeScreen({ navigation }) {
     setGraphicData(wantedGraphicData);
   }, []);
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={[styles.main1]}>
+      <View style={[styles.main]}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -88,13 +92,21 @@ function HomeScreen({ navigation }) {
               value={text}
               keyboardType="numeric"
             />
-            <Button title="submit" onPress={Increment} />
+            <View style={styles.buttonContainer}>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={Increment}
+            >
+              <Text style={styles.textStyle}>Submit</Text>
+            </Pressable>
+            <View style={styles.fillbox}></View>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
               <Text style={styles.textStyle}>Hide Modal</Text>
             </Pressable>
+            </View>
           </View>
         </View>
       </Modal>
@@ -121,10 +133,45 @@ function HomeScreen({ navigation }) {
           data={graphicData}
         />
       </Svg>
+      <TouchableOpacity  activeOpacity={0.6}>
+      <View style={[styles.excerciseItem, { backgroundColor: colors.card }]}>
+        <Text style={[styles.excerciseName, { color: colors.text }]}>
+          pp
+        </Text>
+        <Text style={[styles.excerciseMuscle, { color: colors.text }]}>
+          balls
+        </Text>
+      </View>
+    </TouchableOpacity>
+      </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
+  main: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#252426",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    marginTop: 18,
+    height: "98%",
+    width: "100%",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: -6,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 6,
+    elevation: 5,
+  },
+  main1: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgb(130, 90, 229)",
+  },
+
   centeredView: {
     flex: 1,
     justifyContent: "center",
@@ -137,6 +184,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
+    backgroundColor: "#303030",
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -147,19 +195,37 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  fillbox: {
+    
+   width: '5%',
+   
+  },
   button: {
+    borderRadius: 8,
+    padding: 10,
+    elevation: 2,
+   width: '47.5%',
+   backgroundColor: "rgb(130, 90, 229)",
+   
+  },
+  submitButton: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
   },
   buttonOpen: {
-    backgroundColor: "#F194FF",
+    backgroundColor: "rgb(130, 90, 229)",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "rgb(130, 90, 229)",
   },
   textStyle: {
-    color: "white",
+    color: "#252426",
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -176,19 +242,34 @@ const styles = StyleSheet.create({
     color: "#F5F5F7",
   },
   Header2: {
-    color: "#F5F5F7",
     position: "absolute",
     fontSize: 20,
     top: 450,
+    color: "#F5F5F7",
   },
   input: {
     height: 40,
-    width: 150,
-    margin: 12,
+    width: '100%',
+   borderRadius: 8,
     borderWidth: 1,
     padding: 10,
-    
+    borderColor: "#252426",
+
+  },
+  excerciseItem: {
+    borderRadius: 10,
+    margin: 10,
+    padding: 20,
+    width: '80%',
+  },
+  excerciseName: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  excerciseMuscle: {
+    fontSize: 16,
   },
 });
 
-export default HomeScreen;
+export default Home;

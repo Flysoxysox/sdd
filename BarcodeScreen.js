@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
+    color: "rgb(130, 90, 229)",
 
   },
 });
