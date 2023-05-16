@@ -13,6 +13,7 @@ import XLibrary from "./XLibrary";
 import RLibrary from "./RLibrary";
 import IntakeCalculator from "./IntakeCalculator";
 import Home from "./Home";
+import Workout from "./Workout";
 
 const MyTheme = {
   dark: true,
@@ -47,7 +48,32 @@ export default function App() {
             headerTintColor: "#252426",
           }}
         />
-       
+        <Drawer.Screen
+          name="Your Workouts"
+          component={Workout}
+          options={{
+            headerTintColor: "rgb(130, 90, 229)",
+            headerStyle: {
+              elevation: 0,
+              shadowOpacity: 1,
+              borderBottomWidth: 0,
+              shadowColor: "#0E1013",
+            },
+          }}
+        />
+        <Drawer.Screen
+          name="Calculators & Statistics"
+          component={IntakeCalculator}
+          options={{
+            headerTintColor: "rgb(130, 90, 229)",
+            headerStyle: {
+              elevation: 0,
+              shadowOpacity: 1,
+              borderBottomWidth: 0,
+              shadowColor: "#0E1013",
+            },
+          }}
+        />
         <Drawer.Screen
           name="Barcode Scanner"
           component={BarcodeScreen}
@@ -87,19 +113,8 @@ export default function App() {
             },
           }}
         />
-        <Drawer.Screen
-          name="Intake Calculator"
-          component={IntakeCalculator}
-          options={{
-            headerTintColor: "rgb(130, 90, 229)",
-            headerStyle: {
-              elevation: 0,
-              shadowOpacity: 1,
-              borderBottomWidth: 0,
-              shadowColor: "#0E1013",
-            },
-          }}
-        />
+        
+        
         
       </Drawer.Navigator>
     </NavigationContainer>

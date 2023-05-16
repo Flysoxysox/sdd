@@ -74,75 +74,89 @@ function Home({ navigation }) {
   return (
     <View style={[styles.main1]}>
       <View style={[styles.main]}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter Name"
-              onChangeText={(text) => setText(text)}
-              value={text}
-              keyboardType="numeric"
-            />
-            <View style={styles.buttonContainer}>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={Increment}
-            >
-              <Text style={styles.textStyle}>Submit</Text>
-            </Pressable>
-            <View style={styles.fillbox}></View>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <TextInput
+                style={styles.input}
+                placeholder="Enter Name"
+                onChangeText={(text) => setText(text)}
+                value={text}
+                keyboardType="numeric"
+              />
+              <View style={styles.buttonContainer}>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={Increment}
+                >
+                  <Text style={styles.textStyle}>Submit</Text>
+                </Pressable>
+                <View style={styles.fillbox}></View>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setModalVisible(!modalVisible)}
+                >
+                  <Text style={styles.textStyle}>Hide Modal</Text>
+                </Pressable>
+              </View>
             </View>
           </View>
+        </Modal>
+        <View style={styles.pieview}>
+          <Text style={styles.Header1}>
+            {storedData}/{caltotal}
+          </Text>
+          <Text style={styles.Header2}>Press to add</Text>
+
+          <Svg width={500} height={500}>
+            <Circle
+              cx={250}
+              cy={250}
+              r={150}
+              onPress={() => setModalVisible(true)}
+            />
+
+            <VictoryPie
+              standalone={false}
+              width={500}
+              height={500}
+              innerRadius={140}
+              colorScale={graphicColor}
+              data={graphicData}
+            />
+          </Svg>
         </View>
-      </Modal>
+        <View style={styles.buttonview}>
+          <View style={styles.buttonblock}>
+            <TouchableOpacity style={styles.dabutton} activeOpacity={0.7} onPress={() => navigation.navigate('Your Workouts')}>
+              <Text style={styles.buttonhead1}>Workout 🏋️</Text>
+              <Text style={styles.buttonhead2}>Access today's assigned workout plan</Text>
+            </TouchableOpacity>
+          </View>
 
-      <Text style={styles.Header1}>
-        {storedData}/{caltotal}
-      </Text>
-      <Text style={styles.Header2}>Press to add</Text>
+          <View style={styles.buttonblock}>
+            <TouchableOpacity style={styles.dabutton} activeOpacity={0.7}  onPress={() => navigation.navigate('Barcode Scanner')}>
+              <Text style={styles.buttonhead1}>Food 🍔</Text>
+              <Text style={styles.buttonhead2}>Scan a new food item</Text>
+            </TouchableOpacity>
+          </View>
 
-      <Svg width={500} height={500}>
-        <Circle
-          cx={250}
-          cy={250}
-          r={150}
-          onPress={() => setModalVisible(true)}
-        />
+          <View style={styles.buttonblock}>
+            <TouchableOpacity style={styles.dabutton} activeOpacity={0.7} onPress={() => navigation.navigate('Calculators & Statistics')}>
+              <Text style={styles.buttonhead1}>Track 📈</Text>
+              <Text style={styles.buttonhead2}>Record and calculate your growth</Text>
+            </TouchableOpacity>
+          </View>
 
-        <VictoryPie
-          standalone={false}
-          width={500}
-          height={500}
-          innerRadius={140}
-          colorScale={graphicColor}
-          data={graphicData}
-        />
-      </Svg>
-      <TouchableOpacity  activeOpacity={0.6}>
-      <View style={[styles.excerciseItem, { backgroundColor: colors.card }]}>
-        <Text style={[styles.excerciseName, { color: colors.text }]}>
-          pp
-        </Text>
-        <Text style={[styles.excerciseMuscle, { color: colors.text }]}>
-          balls
-        </Text>
-      </View>
-    </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -178,6 +192,44 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
+  pieview: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: "55%",
+
+    width: "95%",
+    position: "relative",
+  },
+  Header1: {
+    position: "absolute",
+
+    fontWeight: "bold",
+    fontSize: 45,
+    color: "#F5F5F7",
+  },
+  Header2: {
+    position: "absolute",
+    top: "57%",
+
+    fontSize: 20,
+    color: "#F5F5F7",
+  },
+
+  buttonview: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: "45%",
+    width: "95%",
+  },
+  buttonblock: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: "26%",
+    width: "95%",
+    marginBottom: 30,
+    
+    borderRadius: 10,
+  },
   modalView: {
     margin: 20,
     width: 300,
@@ -201,17 +253,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   fillbox: {
-    
-   width: '5%',
-   
+    width: "5%",
   },
   button: {
     borderRadius: 8,
     padding: 10,
     elevation: 2,
-   width: '47.5%',
-   backgroundColor: "rgb(130, 90, 229)",
-   
+    width: "47.5%",
+    backgroundColor: "rgb(130, 90, 229)",
   },
   submitButton: {
     borderRadius: 20,
@@ -233,34 +282,19 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
   },
-  Header1: {
-    position: "absolute",
-    fontWeight: "bold",
-    fontSize: 45,
-    marginBottom: 10,
-    top: 390,
-    color: "#F5F5F7",
-  },
-  Header2: {
-    position: "absolute",
-    fontSize: 20,
-    top: 450,
-    color: "#F5F5F7",
-  },
+
   input: {
     height: 40,
-    width: '100%',
-   borderRadius: 8,
+    width: "100%",
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     borderColor: "#252426",
-
   },
   excerciseItem: {
     borderRadius: 10,
     margin: 10,
-    padding: 20,
-    width: '80%',
+    width: "99%",
   },
   excerciseName: {
     fontSize: 24,
@@ -270,6 +304,26 @@ const styles = StyleSheet.create({
   excerciseMuscle: {
     fontSize: 16,
   },
+  dabutton: {
+    backgroundColor: "#303030",
+    width: "100%",
+    height: "100%",
+    borderRadius: 10, 
+    paddingLeft: '6%',
+    paddingTop: '5%',
+  },
+  buttonhead1:{
+      fontWeight: "bold",
+      fontSize: 30,
+      color: "#F5F5F7",
+  
+  },
+  buttonhead2:{
+    
+    fontSize: 15,
+    color: "#F5F5F7",
+
+},
 });
 
 export default Home;
