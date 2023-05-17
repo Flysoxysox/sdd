@@ -7,7 +7,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import Animated from "react-native-reanimated";
 
-
 import BarcodeScreen from "./BarcodeScreen";
 import XLibrary from "./XLibrary";
 import RLibrary from "./RLibrary";
@@ -65,13 +64,10 @@ export default function App() {
           name="Calculators & Statistics"
           component={IntakeCalculator}
           options={{
-            headerTintColor: "rgb(130, 90, 229)",
             headerStyle: {
-              elevation: 0,
-              shadowOpacity: 1,
-              borderBottomWidth: 0,
-              shadowColor: "#0E1013",
+              backgroundColor: "rgb(130, 90, 229)",
             },
+            headerTintColor: "#252426",
           }}
         />
         <Drawer.Screen
@@ -113,9 +109,6 @@ export default function App() {
             },
           }}
         />
-        
-        
-        
       </Drawer.Navigator>
     </NavigationContainer>
   );

@@ -49,12 +49,11 @@ function BarcodeScreen({ navigation }) {
 
   return (
     <View
-      style={{
-        flex: 1,
+      style={{flex: 1,
         flexDirection: "column",
-        justifyContent: "flex-end",
-      }}
+        justifyContent: "flex-end",}}
     >
+    
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={[StyleSheet.absoluteFillObject, styles.container]}
@@ -67,28 +66,35 @@ function BarcodeScreen({ navigation }) {
         <Text onPress={() =>  navigation.navigate('Home')} style={styles.cancel}>
           Cancel
         </Text>
+        
       </BarCodeScanner>
+   
+      <View style={styles.smallbox}>
       {scanned && (
         <View style={styles.againbutton}>
           <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
         </View>
       )}
+      </View>
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+   
     justifyContent: "center",
     alignItems: "center",
     paddingTop: Constants.statusBarHeight,
     backgroundColor: "#ecf0f1",
-    padding: 8,
+    paddingBottom: "20%",
+    
   },
   qr: {
     width: qrSize + 120,
     height: qrSize + 120,
+    
   },
   description: {
     fontSize: width * 0.09,
@@ -99,16 +105,30 @@ const styles = StyleSheet.create({
   cancel: {
     fontSize: width * 0.05,
     textAlign: "center",
-    paddingTop: 40,
+    paddingTop: 0,
     width: "70%",
     color: "white",
   },
   againbutton: {
+   
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
     color: "rgb(130, 90, 229)",
 
+  },
+  smallbox:{
+    width: "100%",
+    height: "20%",
+   opacity: 0.5,
+    textAlign: "center",
+    justifyContent: "center",
+  },
+  bigbox:{
+    width: "100%",
+    height: "80%",
+    
+    
   },
 });
 export default BarcodeScreen;

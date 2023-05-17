@@ -57,7 +57,7 @@ function Home({ navigation }) {
   };
 
   const Increment = async () => {
-    await AsyncStorage.setItem("stuff", JSON.stringify(storedData + N1));
+    await AsyncStorage.setItem("stuff", JSON.stringify(storedData));
 
     ReloadData();
 
@@ -87,7 +87,7 @@ function Home({ navigation }) {
             <View style={styles.modalView}>
               <TextInput
                 style={styles.input}
-                placeholder="Enter Name"
+                placeholder="Enter Caloric Amount"
                 onChangeText={(text) => setText(text)}
                 value={text}
                 keyboardType="numeric"
@@ -289,7 +289,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     padding: 10,
-    borderColor: "#252426",
+    borderColor: "white",
+    color: "white",
   },
   excerciseItem: {
     borderRadius: 10,
