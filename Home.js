@@ -14,7 +14,7 @@ import {
 import { TextSize, VictoryPie, standalone, VictoryLabel } from "victory-native";
 import Svg, { Path, Circle } from "react-native-svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useTheme } from "@react-navigation/native";
+import { useTheme, useFocusEffect } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -36,6 +36,7 @@ function Home({ navigation }) {
   var N1 = Number(text);
   var graphicColor = [alertcol, "#8250e5", "#8250e5"];
   const [storedData, setStoredData] = useState(0);
+  const [caloricIntake, setCaloricIntake] = useState(1000);
 
   const GetData = () => {
     AsyncStorage.getItem("stuff")
@@ -46,31 +47,44 @@ function Home({ navigation }) {
         console.error(err);
       });
   };
-
+  const loadCal = async () => {
+    const caloricIntake = await AsyncStorage.getItem("cal");
+    if (caloricIntake) {
+      setCaloricIntake(caloricIntake);
+    }
+  };
   const ReloadData = () => {
     GetData();
   };
-
-  const SetTo1 = async () => {
-    await AsyncStorage.setItem("stuff", JSON.stringify(1));
-    ReloadData();
+  const backtozero = async () => {
+    await AsyncStorage.setItem("stuff", JSON.stringify(storedData - storedData));
   };
 
+  
   const Increment = async () => {
-    await AsyncStorage.setItem("stuff", JSON.stringify(storedData));
-
+    await AsyncStorage.setItem("stuff", JSON.stringify(storedData + N1));
     ReloadData();
-
     setGraphicData(wantedGraphicData);
+    setModalVisible(!modalVisible)
+    console.log(storedData + N1)
   };
   const wantedGraphicData = [
-    { x: " ", y: ((storedData + N1) / caltotal) * 100 },
-    { x: " ", y: 100 - ((storedData + N1) / caltotal) * 100 },
+    { x: " ", y: ((storedData + N1) / Math.ceil(caloricIntake)) * 100 },
+    { x: " ", y: 100 - ((storedData + N1) / Math.ceil(caloricIntake)) * 100 },
   ];
 
   useEffect(() => {
     setGraphicData(wantedGraphicData);
+    loadCal();
+    backtozero();
   }, []);
+
+  // Reload data on screen focus
+  useFocusEffect(
+    React.useCallback(() => {
+      ReloadData();
+    }, [])
+  );
   return (
     <View style={[styles.main1]}>
       <View style={[styles.main]}>
@@ -86,7 +100,7 @@ function Home({ navigation }) {
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <TextInput
-                style={styles.input}
+                style={styles.input} 
                 placeholder="Enter Caloric Amount"
                 onChangeText={(text) => setText(text)}
                 value={text}
@@ -112,7 +126,7 @@ function Home({ navigation }) {
         </Modal>
         <View style={styles.pieview}>
           <Text style={styles.Header1}>
-            {storedData}/{caltotal}
+            {storedData}/{Math.ceil(caloricIntake)}
           </Text>
           <Text style={styles.Header2}>Press to add</Text>
 
@@ -289,7 +303,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     padding: 10,
-    borderColor: "white",
+    borderColor: "rgb(130, 90, 229)",
     color: "white",
   },
   excerciseItem: {

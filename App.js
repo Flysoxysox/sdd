@@ -4,15 +4,19 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, Dimensions } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from '@react-navigation/stack';
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import Animated from "react-native-reanimated";
 
 import BarcodeScreen from "./BarcodeScreen";
 import XLibrary from "./XLibrary";
 import RLibrary from "./RLibrary";
-import IntakeCalculator from "./IntakeCalculator";
+import IntakeCalculator from "./CalcStats";
 import Home from "./Home";
 import Workout from "./Workout";
+import PrMan from "./PrMan";
+import CalcStats from "./CalcStats";
+
 
 const MyTheme = {
   dark: true,
@@ -27,10 +31,12 @@ const MyTheme = {
 };
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
+      
       <Drawer.Navigator
         initialRouteName="Home"
         screenOptions={{
@@ -40,6 +46,16 @@ export default function App() {
         <Drawer.Screen
           name="Home"
           component={Home}
+          options={{
+            headerStyle: {
+              backgroundColor: "rgb(130, 90, 229)",
+            },
+            headerTintColor: "#252426",
+          }}
+        />
+         <Drawer.Screen
+          name="Calculators & Statistics"
+          component={CalcStats}
           options={{
             headerStyle: {
               backgroundColor: "rgb(130, 90, 229)",
@@ -58,18 +74,10 @@ export default function App() {
               borderBottomWidth: 0,
               shadowColor: "#0E1013",
             },
+            
           }}
         />
-        <Drawer.Screen
-          name="Calculators & Statistics"
-          component={IntakeCalculator}
-          options={{
-            headerStyle: {
-              backgroundColor: "rgb(130, 90, 229)",
-            },
-            headerTintColor: "#252426",
-          }}
-        />
+       
         <Drawer.Screen
           name="Barcode Scanner"
           component={BarcodeScreen}
@@ -109,7 +117,23 @@ export default function App() {
             },
           }}
         />
+        <Drawer.Screen
+          name="Pr Manager"
+          component={PrMan}
+          options={{
+            headerTintColor: "rgb(130, 90, 229)",
+            headerStyle: {
+              elevation: 0,
+              shadowOpacity: 1,
+              borderBottomWidth: 0,
+              shadowColor: "#0E1013",
+            },
+            drawerLabel: () => null 
+          }}
+        />
+
       </Drawer.Navigator>
+      
     </NavigationContainer>
   );
 }
