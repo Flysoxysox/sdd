@@ -11,11 +11,11 @@ import Animated from "react-native-reanimated";
 import BarcodeScreen from "./BarcodeScreen";
 import XLibrary from "./XLibrary";
 import RLibrary from "./RLibrary";
-import IntakeCalculator from "./CalcStats";
 import Home from "./Home";
-import Workout from "./Workout";
+import Monday from "./Monday";
 import PrMan from "./PrMan";
 import CalcStats from "./CalcStats";
+import Tuesday from "./Tuesday";
 
 
 const MyTheme = {
@@ -65,15 +65,12 @@ export default function App() {
         />
         <Drawer.Screen
           name="Your Workouts"
-          component={Workout}
+          component={Monday}
           options={{
-            headerTintColor: "rgb(130, 90, 229)",
             headerStyle: {
-              elevation: 0,
-              shadowOpacity: 1,
-              borderBottomWidth: 0,
-              shadowColor: "#0E1013",
+              backgroundColor: "rgb(130, 90, 229)",
             },
+            headerTintColor: "#252426",
             
           }}
         />
@@ -118,7 +115,7 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-          name="Pr Manager"
+          name="PR Manager"
           component={PrMan}
           options={{
             headerTintColor: "rgb(130, 90, 229)",
@@ -128,6 +125,17 @@ export default function App() {
               borderBottomWidth: 0,
               shadowColor: "#0E1013",
             },
+            drawerLabel: () => null 
+          }}
+        />
+         <Drawer.Screen
+          name=" Your Workouts "
+          component={Tuesday}
+          options={{
+            headerStyle: {
+              backgroundColor: "rgb(130, 90, 229)",
+            },
+            headerTintColor: "#252426",
             drawerLabel: () => null 
           }}
         />

@@ -599,7 +599,7 @@ function CalcStats({ navigation }) {
             <TouchableOpacity
               style={styles.dabutton}
               activeOpacity={0.7}
-              onPress={() => navigation.navigate("Pr Manager")}
+              onPress={() => navigation.navigate("PR Manager")}
             >
               <Text style={styles.buttonhead1}>PR Management 🌱</Text>
               <Text style={styles.buttonhead2}>

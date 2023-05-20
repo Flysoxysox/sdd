@@ -30,13 +30,13 @@ function XLibrary({ navigation }) {
   const [Dip, setDip] = useState(0);
 
   const Save = async () => {
-    await AsyncStorage.setItem("Bench", Bench);
-    await AsyncStorage.setItem("Squat", Squat);
-    await AsyncStorage.setItem("Deadlift", Deadlift);
-    await AsyncStorage.setItem("Pullup", Pullup);
-    await AsyncStorage.setItem("OHP", OHP);
-    await AsyncStorage.setItem("Deadhang", Deadhang);
-    await AsyncStorage.setItem("Dip", Dip);
+    await AsyncStorage.setItem("Bench", (Bench));
+    await AsyncStorage.setItem("Squat", (Squat));
+    await AsyncStorage.setItem("Deadlift", (Deadlift));
+    await AsyncStorage.setItem("Pullup", (Pullup));
+    await AsyncStorage.setItem("OHP", (OHP));
+    await AsyncStorage.setItem("Deadhang", (Deadhang));
+    await AsyncStorage.setItem("Dip", (Dip));
     setModalVisible(false);
     setModalVisible1(false);
     setModalVisible2(false);
@@ -122,7 +122,7 @@ function XLibrary({ navigation }) {
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
 
-      <TouchableOpacity
+<TouchableOpacity
         onPress={() => setModalVisible(true)}
         activeOpacity={0.7}
       >
