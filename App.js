@@ -1,12 +1,8 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button, Dimensions } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import Animated from "react-native-reanimated";
 
 import BarcodeScreen from "./BarcodeScreen";
 import XLibrary from "./XLibrary";
@@ -16,6 +12,10 @@ import Monday from "./Monday";
 import PrMan from "./PrMan";
 import CalcStats from "./CalcStats";
 import Tuesday from "./Tuesday";
+import Wednesday from "./Wednesday";
+import Thursday from "./Thursday";
+import Friday from "./Friday";
+import Saturday from "./Saturday";
 
 
 const MyTheme = {
@@ -119,6 +119,7 @@ export default function App() {
           component={PrMan}
           options={{
             headerTintColor: "rgb(130, 90, 229)",
+            drawerActiveBackgroundColor: 'transparent',
             headerStyle: {
               elevation: 0,
               shadowOpacity: 1,
@@ -136,6 +137,55 @@ export default function App() {
               backgroundColor: "rgb(130, 90, 229)",
             },
             headerTintColor: "#252426",
+            drawerActiveBackgroundColor: 'transparent',
+            drawerLabel: () => null 
+          }}
+        />
+         <Drawer.Screen
+          name="  Your Workouts  "
+          component={Wednesday}
+          options={{
+            headerStyle: {
+              backgroundColor: "rgb(130, 90, 229)",
+            },
+            headerTintColor: "#252426",
+            drawerActiveBackgroundColor: 'transparent',
+            drawerLabel: () => null 
+          }}
+        />
+        <Drawer.Screen
+          name="   Your Workouts   "
+          component={Thursday}
+          options={{
+            headerStyle: {
+              backgroundColor: "rgb(130, 90, 229)",
+            },
+            headerTintColor: "#252426",
+            drawerActiveBackgroundColor: 'transparent',
+            drawerLabel: () => null 
+          }}
+        />
+        <Drawer.Screen
+          name="    Your Workouts    "
+          component={Friday}
+          options={{
+            headerStyle: {
+              backgroundColor: "rgb(130, 90, 229)",
+            },
+            headerTintColor: "#252426",
+            drawerActiveBackgroundColor: 'transparent',
+            drawerLabel: () => null 
+          }}
+        />
+        <Drawer.Screen
+          name="     Your Workouts     "
+          component={Saturday}
+          options={{
+            headerStyle: {
+              backgroundColor: "rgb(130, 90, 229)",
+            },
+            headerTintColor: "#252426",
+            drawerActiveBackgroundColor: 'transparent',
             drawerLabel: () => null 
           }}
         />

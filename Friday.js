@@ -16,7 +16,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTheme, useFocusEffect } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-function Monday({ navigation }) {
+function Friday({ navigation }) {
   const { colors } = useTheme();
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalVisible1, setModalVisible1] = React.useState(false);
@@ -34,12 +34,12 @@ function Monday({ navigation }) {
   
 
   const Save = async () => {
-    await AsyncStorage.setItem("A", A.toString());
-    await AsyncStorage.setItem("B", B.toString());
-    await AsyncStorage.setItem("C", C.toString());
-    await AsyncStorage.setItem("D", D.toString());
-    await AsyncStorage.setItem("E", E.toString());
-    await AsyncStorage.setItem("F", F.toString());
+    await AsyncStorage.setItem("A4", A.toString());
+    await AsyncStorage.setItem("B4", B.toString());
+    await AsyncStorage.setItem("C4", C.toString());
+    await AsyncStorage.setItem("D4", D.toString());
+    await AsyncStorage.setItem("E4", E.toString());
+    await AsyncStorage.setItem("F4", F.toString());
   
     setModalVisible(false);
     setModalVisible1(false);
@@ -50,12 +50,12 @@ function Monday({ navigation }) {
   };
   
   const load = async () => {
-    const A = await AsyncStorage.getItem("A");
-    const B = await AsyncStorage.getItem("B");
-    const C = await AsyncStorage.getItem("C");
-    const D = await AsyncStorage.getItem("D");
-    const E = await AsyncStorage.getItem("E");
-    const F = await AsyncStorage.getItem("F");
+    const A = await AsyncStorage.getItem("A4");
+    const B = await AsyncStorage.getItem("B4");
+    const C = await AsyncStorage.getItem("C4");
+    const D = await AsyncStorage.getItem("D4");
+    const E = await AsyncStorage.getItem("E4");
+    const F = await AsyncStorage.getItem("F4");
   
     if (A) {
       setA(parseInt(A));
@@ -90,11 +90,12 @@ function Monday({ navigation }) {
               name="chevron-back-outline"
               style={styles.arrowL}
               size={50}
-              color="#505050"
+              color="white"
+              onPress={() => navigation.navigate("   Your Workouts   ")}
             />
           </View>
           <View style={[styles.textbox]}>
-            <Text style={styles.dayheader}>Monday</Text>
+            <Text style={styles.dayheader}>Friday</Text>
           </View>
           <View style={[styles.arrowbox]}>
             <Ionicons
@@ -102,7 +103,7 @@ function Monday({ navigation }) {
               style={styles.arrowR}
               size={50}
               color="white"
-              onPress={() => navigation.navigate(" Your Workouts ")}
+              onPress={() => navigation.navigate("     Your Workouts     ")}
             />
           </View>
         </View>
@@ -118,7 +119,7 @@ function Monday({ navigation }) {
               <View style={styles.rowcontainer}>
                 <View style={styles.rowitem}>
                   <Text style={[styles.excerciseName, { color: colors.text }]}>
-                    Barbell Bench Press
+                    DB Bench Press
                   </Text>
                   <Text
                     style={[styles.excerciseMuscle, { color: colors.text }]}
@@ -190,12 +191,12 @@ function Monday({ navigation }) {
               <View style={styles.rowcontainer}>
                 <View style={styles.rowitem}>
                   <Text style={[styles.excerciseName, { color: colors.text }]}>
-                    Cable Lat-Pulldown
+                   Back Squat
                   </Text>
                   <Text
                     style={[styles.excerciseMuscle, { color: colors.text }]}
                   >
-                    Upper Back
+                    Full Legs
                   </Text>
                 </View>
               </View>
@@ -334,12 +335,12 @@ function Monday({ navigation }) {
               <View style={styles.rowcontainer}>
                 <View style={styles.rowitem}>
                   <Text style={[styles.excerciseName, { color: colors.text }]}>
-                    Barbell Row
+                    Leg Extensions
                   </Text>
                   <Text
                     style={[styles.excerciseMuscle, { color: colors.text }]}
                   >
-                    Upper Back
+                   Quads
                   </Text>
                 </View>
               </View>
@@ -693,4 +694,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Monday;
+export default Friday;

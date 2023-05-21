@@ -78,43 +78,7 @@ function XLibrary({ navigation }) {
     }
   };
 
-  const excercises = [
-    {
-      name: "Bench Press",
-      Muscle: "Chest",
-      oneRepMax: "",
-    },
-    {
-      name: "Squat",
-      Muscle: "Legs",
-      oneRepMax: "",
-    },
-    {
-      name: "Deadlift",
-      Muscle: "Back",
-      oneRepMax: "",
-    },
-    {
-      name: "Weighted Pullup",
-      Muscle: "Back",
-      oneRepMax: "",
-    },
-    {
-      name: "Standing OHP",
-      Muscle: "Shoulders",
-      oneRepMax: "",
-    },
-    {
-      name: "Deadhang Duration",
-      Muscle: "Grip",
-      oneRepMax: "",
-    },
-    {
-      name: "Weighted Dip",
-      Muscle: "Chest",
-      oneRepMax: "",
-    },
-  ];
+  
 
   useEffect(() => {
     load();
