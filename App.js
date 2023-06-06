@@ -31,7 +31,7 @@ const MyTheme = {
 };
 
 const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
+
 
 export default function App() {
   return (

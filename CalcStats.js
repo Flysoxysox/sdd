@@ -82,6 +82,7 @@ function CalcStats({ navigation }) {
       }
 
       setWaterIntake(waterIntake.toFixed(2));
+      AsyncStorage.setItem("water", waterIntake.toFixed(2));
     }
   };
   const calculateBMI = async () => {
@@ -123,12 +124,19 @@ function CalcStats({ navigation }) {
       setActivityLevel(activityLevel);
     }
   };
+  const loadwater = async () => {
+    const water = await AsyncStorage.getItem("water");
+    if (water) {
+      setWaterIntake(water);
+    }
+  };
 
   useEffect(() => {
     loadBMI();
     loadWeight();
     loadCal();
     loadalvl();
+    loadwater();
   }, []);
 
   return (

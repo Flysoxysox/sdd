@@ -16,10 +16,6 @@ import Svg, { Path, Circle } from "react-native-svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTheme, useFocusEffect } from "@react-navigation/native";
 
-const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get("window").height;
-const store = 0;
-
 const defaultGraphicData = [
   { x: " ", y: 0 },
   { x: " ", y: 0 },
@@ -79,10 +75,13 @@ function Home({ navigation }) {
     backtozero();
   }, []);
 
-  // Reload data on screen focus
+  
   useFocusEffect(
     React.useCallback(() => {
       ReloadData();
+      
+    loadCal();
+    backtozero();
     }, [])
   );
   return (

@@ -11,8 +11,6 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import { TextSize, VictoryPie, standalone, VictoryLabel } from "victory-native";
-import Svg, { Path, Circle } from "react-native-svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTheme, useFocusEffect } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
