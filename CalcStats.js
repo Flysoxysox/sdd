@@ -42,13 +42,13 @@ function CalcStats({ navigation }) {
   };
 
   const weightGoalFactors = {
-    lose1000: 0.71,
-    lose500: 0.86,
-    lose250: 0.93,
-    maintain: 1,
-    gain250: 1.07,
-    gain500: 1.14,
-    gain1000: 1.29,
+    1: 0.71,
+    2: 0.86,
+    3: 0.93,
+    4: 1,
+    5: 1.07,
+    6: 1.14,
+    7: 1.29,
   };
 
   const calculateCaloricIntake = () => {
@@ -84,6 +84,7 @@ function CalcStats({ navigation }) {
       setWaterIntake(waterIntake.toFixed(2));
     }
   };
+
   const calculateBMI = async () => {
     if (weight && height) {
       const weightKg = parseFloat(weight);
@@ -99,12 +100,17 @@ function CalcStats({ navigation }) {
     }
   };
 
+  
   const loadBMI = async () => {
     const storedBMI = await AsyncStorage.getItem("bmi");
     if (storedBMI) {
       setBMI(storedBMI);
     }
   };
+
+
+
+
   const loadWeight = async () => {
     const storedWeight = await AsyncStorage.getItem("weight");
     if (storedWeight) {
@@ -332,37 +338,37 @@ function CalcStats({ navigation }) {
                 <Picker.Item
                   color="white"
                   label="Lose 1KG a week"
-                  value="lose1000"
+                  value="1"
                 />
                 <Picker.Item
                   color="white"
                   label="Lose 0.5KG a week"
-                  value="lose500"
+                  value="2"
                 />
                 <Picker.Item
                   color="white"
                   label="Lose 0.25KG a week"
-                  value="lose250"
+                  value="3"
                 />
                 <Picker.Item
                   color="white"
                   label="Maintain Weight"
-                  value="maintain"
+                  value="4"
                 />
                 <Picker.Item
                   color="white"
                   label="Gain 0.25KG a week"
-                  value="gain250"
+                  value="5"
                 />
                 <Picker.Item
                   color="white"
                   label="Gain 0.5KG a week"
-                  value="gain500"
+                  value="6"
                 />
                 <Picker.Item
                   color="white"
                   label="Gain 1KG a week"
-                  value="gain1000"
+                  value="7"
                 />
               </Picker>
 

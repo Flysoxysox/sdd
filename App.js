@@ -89,7 +89,7 @@ export default function App() {
           }}
         />
         <Drawer.Screen
-          name="Excercise Library"
+          name="Exercise Library"
           component={XLibrary}
           options={{
             headerTintColor: "rgb(130, 90, 229)",
