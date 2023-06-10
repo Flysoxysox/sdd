@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   Pressable,
+  ScrollView,
   TextInput,
   Button,
   TouchableOpacity,
@@ -108,6 +109,7 @@ function Tuesday({ navigation }) {
         </View>
 
         <View style={[styles.bodybox]}>
+        <ScrollView scrollIndicatorInsets={{ right: 1 }}>
           <TouchableOpacity
             onPress={() => setModalVisible(true)}
             activeOpacity={0.7}
@@ -173,7 +175,7 @@ function Tuesday({ navigation }) {
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => setModalVisible(!modalVisible)}
                   >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
+                    <Text style={styles.textStyle}>Close</Text>
                   </Pressable>
                 </View>
               </View>
@@ -245,7 +247,7 @@ function Tuesday({ navigation }) {
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => setModalVisible1(!modalVisible1)}
                   >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
+                    <Text style={styles.textStyle}>Close</Text>
                   </Pressable>
                 </View>
               </View>
@@ -317,7 +319,7 @@ function Tuesday({ navigation }) {
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => setModalVisible2(!modalVisible2)}
                   >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
+                    <Text style={styles.textStyle}>Close</Text>
                   </Pressable>
                 </View>
               </View>
@@ -389,7 +391,7 @@ function Tuesday({ navigation }) {
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => setModalVisible3(!modalVisible3)}
                   >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
+                    <Text style={styles.textStyle}>Close</Text>
                   </Pressable>
                 </View>
               </View>
@@ -461,7 +463,7 @@ function Tuesday({ navigation }) {
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => setModalVisible4(!modalVisible4)}
                   >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
+                    <Text style={styles.textStyle}>Close</Text>
                   </Pressable>
                 </View>
               </View>
@@ -533,12 +535,13 @@ function Tuesday({ navigation }) {
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => setModalVisible5(!modalVisible5)}
                   >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
+                    <Text style={styles.textStyle}>Close</Text>
                   </Pressable>
                 </View>
               </View>
             </View>
           </Modal>
+          </ScrollView>
         </View>
       </View>
     </View>
@@ -567,6 +570,8 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 8,
     padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
     elevation: 2,
     width: "47.5%",
     backgroundColor: "rgb(130, 90, 229)",

@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { Modal } from "react-native";
@@ -328,7 +329,9 @@ function RLibrary({ navigation }) {
       </ScrollView>
 
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <View style={[styles.modalContainer]}>
+      <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+        <View style={[styles.modalContainer]}></View>
+        </TouchableWithoutFeedback>
           <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
             <ScrollView scrollIndicatorInsets={{ right: 1 }}>
               <Text style={[styles.modalTitle, { color: colors.text }]}>
@@ -399,7 +402,7 @@ function RLibrary({ navigation }) {
               </TouchableOpacity>
             </ScrollView>
           </View>
-        </View>
+        
       </Modal>
     </View>
   );

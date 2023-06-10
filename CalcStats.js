@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  Pressable,
+  TouchableWithoutFeedback,
   TextInput,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -157,7 +157,9 @@ function CalcStats({ navigation }) {
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={[styles.modalContainer]}>
+        <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+        <View style={[styles.modalContainer]}></View>
+        </TouchableWithoutFeedback>
           <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
             <ScrollView scrollIndicatorInsets={{ right: 1 }}>
               <Text style={[styles.modalTitle, { color: colors.text }]}>
@@ -240,7 +242,8 @@ function CalcStats({ navigation }) {
               </TouchableOpacity>
             </ScrollView>
           </View>
-        </View>
+          
+        
       </Modal>
       {/* This is the Calorie modal */}
       <Modal
@@ -252,7 +255,9 @@ function CalcStats({ navigation }) {
           setModalVisible2(!modalVisible2);
         }}
       >
-        <View style={[styles.modalContainer]}>
+       <TouchableWithoutFeedback onPress={() => setModalVisible2(false)}>
+        <View style={[styles.modalContainer]}></View>
+        </TouchableWithoutFeedback>
           <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
             <ScrollView scrollIndicatorInsets={{ right: 1 }}>
               <Text style={[styles.modalTitle, { color: colors.text }]}>
@@ -409,7 +414,7 @@ function CalcStats({ navigation }) {
               </TouchableOpacity>
             </ScrollView>
           </View>
-        </View>
+       
       </Modal>
       {/* This is the Water modal */}
       <Modal
@@ -421,7 +426,9 @@ function CalcStats({ navigation }) {
           setModalVisible3(!modalVisible3);
         }}
       >
-        <View style={[styles.modalContainer]}>
+       <TouchableWithoutFeedback onPress={() => setModalVisible3(false)}>
+        <View style={[styles.modalContainer]}></View>
+        </TouchableWithoutFeedback>
           <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
             <ScrollView scrollIndicatorInsets={{ right: 1 }}>
             <Text style={[styles.modalTitle, { color: colors.text }]}>
@@ -539,13 +546,13 @@ function CalcStats({ navigation }) {
               </TouchableOpacity>
             </ScrollView>
           </View>
-        </View>
+        
       </Modal>
       <View style={[styles.main]}>
         <View style={styles.minicontainer}>
           <View style={styles.Statrowcontainer}>
             <View style={styles.statcontainer}>
-              <Text style={styles.statheader}>Caloric Intake Goal</Text>
+              <Text style={styles.statheader}>Caloric Intake </Text>
               <Text style={styles.stattext}>{Math.ceil(caloricIntake)}</Text>
             </View>
 

@@ -5,9 +5,10 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Modal,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import { Modal } from "react-native";
 
 const ExcerciseItem = ({ name, Muscle, onPress }) => {
   const { colors } = useTheme();
@@ -100,32 +101,38 @@ function XLibrary({ navigation }) {
         ))}
       </ScrollView>
 
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <View style={[styles.modalContainer]}>
-          <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
-            <ScrollView scrollIndicatorInsets={{ right: 1 }}>
-              <Text style={[styles.modalTitle, { color: colors.text }]}>
-                {selectedExcercise.name}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+          <View
+            style={[styles.modalContainer]}
+            onPress={() => setModalVisible(false)}
+          ></View>
+        </TouchableWithoutFeedback>
+        <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
+          <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+            <Text style={[styles.modalTitle, { color: colors.text }]}>
+              {selectedExcercise.name}
+            </Text>
+            <Text style={[styles.Modalheader, { color: colors.text }]}>
+              {selectedExcercise.Muscle}
+            </Text>
+            <Text style={[styles.modalText, { color: colors.text }]}>
+              {selectedExcercise.description}
+            </Text>
+            <TouchableOpacity
+              style={[styles.modalButton, { backgroundColor: colors.primary }]}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={[styles.modalButtonText, { color: colors.text }]}>
+                Close
               </Text>
-              <Text style={[styles.Modalheader, { color: colors.text }]}>
-                {selectedExcercise.Muscle}
-              </Text>
-              <Text style={[styles.modalText, { color: colors.text }]}>
-                {selectedExcercise.description}
-              </Text>
-              <TouchableOpacity
-                style={[
-                  styles.modalButton,
-                  { backgroundColor: colors.primary },
-                ]}
-                onPress={() => setModalVisible(false)}
-              >
-                <Text style={[styles.modalButtonText, { color: colors.text }]}>
-                  Close
-                </Text>
-              </TouchableOpacity>
-            </ScrollView>
-          </View>
+            </TouchableOpacity>
+          </ScrollView>
         </View>
       </Modal>
     </View>

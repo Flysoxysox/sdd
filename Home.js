@@ -16,6 +16,9 @@ import Svg, { Path, Circle } from "react-native-svg";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTheme, useFocusEffect } from "@react-navigation/native";
 
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+
 const defaultGraphicData = [
   { x: " ", y: 0 },
   { x: " ", y: 0 },
@@ -117,7 +120,7 @@ function Home({ navigation }) {
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => setModalVisible(!modalVisible)}
                 >
-                  <Text style={styles.textStyle}>Hide Modal</Text>
+                  <Text style={styles.textStyle}>Close</Text>
                 </Pressable>
               </View>
             </View>
@@ -129,19 +132,19 @@ function Home({ navigation }) {
           </Text>
           <Text style={styles.Header2}>Press to add</Text>
 
-          <Svg width={500} height={500}>
+          <Svg width={windowWidth * 1.15} height={windowWidth * 1.15}>
             <Circle
-              cx={250}
-              cy={250}
-              r={150}
+              cx={windowWidth * 0.4}
+              cy={windowWidth * 0.4}
+              r={windowWidth * 0.3}
               onPress={() => setModalVisible(true)}
             />
 
             <VictoryPie
               standalone={false}
-              width={500}
-              height={500}
-              innerRadius={140}
+              width={windowWidth * 1.15}
+              height={windowWidth * 1.15}
+              innerRadius={windowWidth * 0.325}
               colorScale={graphicColor}
               data={graphicData}
             />
