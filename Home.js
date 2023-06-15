@@ -136,7 +136,7 @@ function Home({ navigation }) {
             <Circle
               cx={windowWidth * 0.4}
               cy={windowWidth * 0.4}
-              r={windowWidth * 0.3}
+              r={windowWidth * 0.6}
               onPress={() => setModalVisible(true)}
             />
 

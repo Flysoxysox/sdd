@@ -546,7 +546,7 @@ function CalcStats({ navigation }) {
               </TouchableOpacity>
             </ScrollView>
           </View>
-        
+         
       </Modal>
       <View style={[styles.main]}>
         <View style={styles.minicontainer}>

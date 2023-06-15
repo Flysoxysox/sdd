@@ -85,7 +85,7 @@ function BarcodeScreen({ navigation }) {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.buttonhead1}>The scanned caloric serving</Text>
+            <Text style={styles.buttonhead1}>The scanned calories per 100g</Text>
             {bdata.product && (
               <Text style={styles.buttonhead3}>{Math.ceil(bdata.product.nutriments.energy / 4.184)} Kcal</Text>
             )}
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   buttonhead1: {
     fontWeight: "bold",
-    fontSize: 22,
+    fontSize: 20,
     color: "#F5F5F7",
     marginBottom: "5%",
   },
