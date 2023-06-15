@@ -25,6 +25,8 @@ const defaultGraphicData = [
   { x: " ", y: 100 },
 ];
 
+
+
 function Home({ navigation }) {
   const { colors } = useTheme();
   var alertcol = "#4e1bb4";

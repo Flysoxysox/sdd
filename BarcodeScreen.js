@@ -17,7 +17,7 @@ function BarcodeScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [text, setText] = useState("");
   const [save, setSave] = useState(0);
-
+// This is where the user camera permissions are checked
   useEffect(() => {
     (async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -27,7 +27,7 @@ function BarcodeScreen({ navigation }) {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-
+// The api fetch
     fetch(
       `https://world.openfoodfacts.org/api/v2/product/${data}.json?fields=nutriments`
     )

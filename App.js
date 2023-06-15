@@ -32,6 +32,7 @@ const MyTheme = {
 
 const Drawer = createDrawerNavigator();
 
+// Home function that contains all the pages
 
 export default function App() {
   return (
